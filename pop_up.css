@@ -1,0 +1,145 @@
+/* ============================ */
+/* Styles pour la Modale (Pop-up) */
+/* ============================ */
+.book-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000; /* Assurez-vous qu'elle est au-dessus de tout */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    padding: 1rem; /* Pour l'espace sur mobile */
+}
+
+.book-modal.is-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: var(--text-light);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    width: 100%;
+    position: relative;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.book-modal.is-open .modal-content {
+    transform: translateY(0);
+}
+
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2em;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--primary-color);
+}
+
+.modal-body {
+    text-align: center;
+}
+
+.modal-body img {
+    max-width: 180px;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.modal-body h2 {
+    font-size: 2em;
+    color: var(--primary-color);
+    margin-bottom: 0.8rem;
+}
+
+.modal-body p {
+    margin-bottom: 0.8rem;
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+.modal-body .modal-price {
+    font-size: 2em;
+    color: var(--accent-color);
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.modal-body .btn-add-to-cart-modal {
+    background-color: var(--accent-color);
+    color: var(--text-light);
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.modal-body .btn-add-to-cart-modal:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Empêche le défilement du body quand la modale est ouverte */
+body.no-scroll {
+    overflow: hidden;
+}
+
+/* Style pour la catégorie active */
+.active-category {
+    background-color: var(--primary-color) !important; /* Force la couleur pour la catégorie active */
+    color: var(--text-light) !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2) !important;
+}
+
+.no-results {
+    text-align: center;
+    font-style: italic;
+    color: #777;
+    padding: 2rem;
+}
+
+/* Média queries pour la modale sur petits écrans */
+@media (max-width: 768px) {
+    .modal-content {
+        padding: 1.5rem;
+        margin: 0 1rem;
+    }
+    .modal-body h2 {
+        font-size: 1.8em;
+    }
+    .modal-body p {
+        font-size: 1em;
+    }
+    .modal-body .modal-price {
+        font-size: 1.8em;
+    }
+    .modal-body .btn-add-to-cart-modal {
+        padding: 0.8rem 1.5rem;
+        font-size: 1em;
+    }
+}

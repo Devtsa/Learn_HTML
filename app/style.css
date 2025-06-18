@@ -1,0 +1,975 @@
+/* ==================================================================== */
+/* Fichier : styles.css                                                 */
+/* Description : Styles CSS pour la bibliothèque numérique en ligne     */
+/* Auteur : Votre Nom / Votre Organisation                              */
+/* Date : 26 Octobre 2023                                               */
+/* ==================================================================== */
+
+/* Importation des polices Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap');
+
+/* ============================ */
+/* Variables CSS (pour la facilité de gestion) */
+/* ============================ */
+:root {
+    --primary-color: #4A90E2; /* Bleu vibrant, pour les accents et boutons */
+    --secondary-color: #6a7fdb; /* Bleu-violet doux, pour des fonds secondaires */
+    --accent-color: #28a745; /* Vert vif, pour les appels à l'action positifs */
+    --text-dark: #333333; /* Texte sombre */
+    --text-light: #ffffff; /* Texte clair */
+    --bg-light: #f4f7f6; /* Fond clair */
+    --bg-dark: #2c3e50; /* Fond foncé (pied de page, header) */
+    --border-color: #e0e0e0; /* Couleur des bordures */
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-hover: rgba(0, 0, 0, 0.2);
+
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+
+    --spacing-unit: 1rem; /* 16px par défaut */
+}
+
+/* ============================ */
+/* Styles Généraux / Réinitialisation */
+/* ============================ */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth; /* Défilement doux pour les ancres */
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Empêche le défilement horizontal non désiré */
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+ul {
+    list-style: none;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-unit);
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.8em;
+    color: var(--text-light); /* Pour le header */
+}
+
+h2 {
+    font-size: 2.2em;
+    margin-top: 2em;
+}
+
+h3 {
+    font-size: 1.5em;
+}
+
+/* Global Button Styles */
+.btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.btn-secondary {
+    display: inline-block;
+    background-color: transparent;
+    color: var(--primary-color);
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    font-weight: 600;
+    border: 2px solid var(--primary-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+
+/* ============================ */
+/* Animations (Keyframes) */
+/* ============================ */
+
+/* Animation de fondu entrant pour les sections */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animation d'apparition pour les éléments */
+@keyframes slideInFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animation de pulsation légère pour les CTA */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+/* Animation de sous-ligne pour les liens de navigation */
+@keyframes underlineGrow {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
+    }
+}
+
+/* ============================ */
+/* En-tête (Header) */
+/* ============================ */
+header {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    padding: 1.5rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 2px 10px var(--shadow-light);
+    position: sticky; /* Rendre le header collant */
+    top: 0;
+    z-index: 1000;
+    animation: slideInFromTop 0.8s ease-out; /* Animation d'apparition du header */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+header nav ul {
+    display: flex;
+    flex-wrap: wrap; /* Permet aux liens de passer à la ligne sur petits écrans */
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+header nav a {
+    color: var(--text-light);
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    position: relative; /* Pour l'animation de la sous-ligne */
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+header nav a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+    bottom: 0;
+    left: 0;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-out;
+}
+
+header nav a:hover::after {
+    transform: scaleX(1);
+}
+
+header nav a:hover {
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* ============================ */
+/* Contenu Principal (Main) */
+/* ============================ */
+main {
+    padding: 0 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Styles pour toutes les sections */
+section {
+    padding: 4rem 2rem;
+    margin-bottom: 2rem;
+    background-color: var(--text-light);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px var(--shadow-light);
+    animation: fadeIn 1s ease-out forwards; /* Animation de fondu pour chaque section */
+    opacity: 0; /* Caché initiallement pour l'animation */
+}
+
+/* Délai pour l'animation des sections */
+section:nth-child(2) { animation-delay: 0.2s; }
+section:nth-child(3) { animation-delay: 0.4s; }
+section:nth-child(4) { animation-delay: 0.6s; }
+section:nth-child(5) { animation-delay: 0.8s; }
+section:nth-child(6) { animation-delay: 1.0s; }
+
+
+/* ============================ */
+/* Section d'Accueil (#accueil) */
+/* ============================ */
+#accueil {
+    text-align: center;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--text-light);
+    padding: 6rem 2rem;
+    margin-top: 2rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+#accueil h2 {
+    color: var(--text-light);
+    font-size: 3em;
+    margin-bottom: 1rem;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+#accueil p {
+    font-size: 1.2em;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    line-height: 1.8;
+}
+
+#accueil a {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--text-light);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    animation: pulse 2s infinite ease-in-out; /* Animation de pulsation sur le CTA */
+}
+
+#accueil a:hover {
+    background-color: #218838; /* Vert plus foncé au survol */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    animation: none; /* Arrête la pulsation au survol */
+}
+
+/* ============================ */
+/* Section de Recherche (#recherche) */
+/* ============================ */
+#recherche {
+    text-align: center;
+}
+
+#recherche form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    max-width: 700px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+#recherche label {
+    position: absolute;
+    left: -9999px; /* Cache visuellement le label mais reste accessible */
+}
+
+#recherche input[type="search"] {
+    flex-grow: 1;
+    padding: 1rem 1.5rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 50px;
+    font-size: 1.1em;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    min-width: 250px; /* Assure une taille minimale */
+}
+
+#recherche input[type="search"]:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 10px rgba(74, 144, 226, 0.4);
+}
+
+#recherche button[type="submit"] {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+#recherche button[type="submit"]:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* ============================ */
+/* Section Livres Numériques (#livres-numeriques) */
+/* ============================ */
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.book-item {
+    background-color: var(--text-light);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 15px var(--shadow-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.book-item:hover {
+    transform: translateY(-10px) scale(1.02); /* Effet de "flottement" */
+    box-shadow: 0 10px 25px var(--shadow-hover);
+}
+
+.book-item img {
+    max-width: 100%;
+    height: 250px; /* Hauteur fixe pour les couvertures */
+    object-fit: cover; /* Assure que l'image couvre l'espace */
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+}
+
+.book-item:hover img {
+    transform: scale(1.03); /* Léger zoom sur la couverture au survol du livre */
+}
+
+.book-item h3 {
+    color: var(--primary-color);
+    font-size: 1.3em;
+    margin-bottom: 0.5rem;
+    min-height: 3.2em; /* Pour uniformiser la hauteur des titres sur 2 lignes */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.book-item .author {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.book-item .description {
+    font-size: 0.95em;
+    color: #555;
+    margin-bottom: 1rem;
+    flex-grow: 1; /* Permet à la description de prendre l'espace restant */
+}
+
+.book-item .format {
+    font-size: 0.85em;
+    color: #888;
+    margin-bottom: 0.5rem;
+}
+
+.book-item .price {
+    font-size: 1.6em;
+    color: var(--accent-color);
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.book-item .btn-details,
+.book-item .btn-add-to-cart {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    font-weight: 600;
+    margin: 0.5rem 0.25rem;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.book-item .btn-details {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border: 2px solid var(--primary-color);
+}
+
+.book-item .btn-details:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.book-item .btn-add-to-cart {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    cursor: pointer;
+}
+
+.book-item .btn-add-to-cart:hover {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* ============================ */
+/* Section Catégories (#categories) */
+/* ============================ */
+#categories ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+#categories li {
+    background-color: var(--secondary-color);
+    border-radius: 25px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+#categories li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+#categories a {
+    display: block;
+    padding: 0.8rem 1.5rem;
+    color: var(--text-light);
+    font-weight: 600;
+    white-space: nowrap; /* Empêche le texte de se casser sur plusieurs lignes */
+    transition: background-color 0.3s ease;
+}
+
+#categories a:hover {
+    background-color: #5d6ed4; /* Variation de la couleur */
+    border-radius: 25px; /* Pour conserver le border-radius au survol */
+}
+
+/* ============================ */
+/* Section "Comment ça marche ?" (#comment-ca-marche) */
+/* ============================ */
+#comment-ca-marche ol {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+#comment-ca-marche li {
+    background-color: var(--bg-light);
+    padding: 1.5rem 2rem;
+    border-left: 5px solid var(--primary-color);
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    font-size: 1.1em;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    opacity: 0; /* Caché initialement pour l'animation */
+    transform: translateX(-20px); /* Pour l'animation d'entrée */
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+#comment-ca-marche li:nth-child(1) { animation-delay: 0.2s; }
+#comment-ca-marche li:nth-child(2) { animation-delay: 0.4s; }
+#comment-ca-marche li:nth-child(3) { animation-delay: 0.6s; }
+#comment-ca-marche li:nth-child(4) { animation-delay: 0.8s; }
+
+#comment-ca-marche li strong {
+    color: var(--primary-color);
+    font-size: 1.2em;
+}
+
+
+/* ============================ */
+/* Pied de Page (Footer) */
+/* ============================ */
+footer {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    padding: 3rem 1rem;
+    text-align: center;
+    margin-top: 4rem;
+}
+
+footer nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+footer nav a {
+    color: var(--text-light);
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+footer nav a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.social-media ul {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.social-media a {
+    color: var(--text-light);
+    font-size: 1.2em;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.social-media a:hover {
+    color: var(--primary-color);
+    transform: translateY(-3px) scale(1.1);
+}
+
+footer p {
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* ============================ */
+/* Styles pour la Modale (Pop-up) */
+/* ============================ */
+.book-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000; /* Assurez-vous qu'elle est au-dessus de tout */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    padding: 1rem; /* Pour l'espace sur mobile */
+}
+
+.book-modal.is-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: var(--text-light);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    width: 100%;
+    position: relative;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.book-modal.is-open .modal-content {
+    transform: translateY(0);
+}
+
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2em;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--primary-color);
+}
+
+.modal-body {
+    text-align: center;
+}
+
+.modal-body img {
+    max-width: 180px;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.modal-body h2 {
+    font-size: 2em;
+    color: var(--primary-color);
+    margin-bottom: 0.8rem;
+}
+
+.modal-body p {
+    margin-bottom: 0.8rem;
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+.modal-body .modal-price {
+    font-size: 2em;
+    color: var(--accent-color);
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.modal-body .btn-add-to-cart-modal {
+    background-color: var(--accent-color);
+    color: var(--text-light);
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.modal-body .btn-add-to-cart-modal:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Empêche le défilement du body quand la modale est ouverte */
+body.no-scroll {
+    overflow: hidden;
+}
+
+/* Style pour la catégorie active */
+.active-category {
+    background-color: var(--primary-color) !important; /* Force la couleur pour la catégorie active */
+    color: var(--text-light) !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2) !important;
+}
+
+.no-results {
+    text-align: center;
+    font-style: italic;
+    color: #777;
+    padding: 2rem;
+}
+
+/* ============================ */
+/* Styles pour la Section de Paiement (#checkout) */
+/* ============================ */
+#checkout {
+    padding: 3rem 2rem;
+    margin-top: 2rem;
+}
+
+#checkout h2 {
+    margin-bottom: 2rem;
+}
+
+/* Masquer les sections par défaut */
+.hidden {
+    display: none !important;
+}
+.hidden-section {
+    display: none; /* Pour masquer la section entière au chargement */
+}
+
+
+.checkout-step {
+    max-width: 700px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--bg-light);
+    box-shadow: 0 4px 10px var(--shadow-light);
+    text-align: center;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.checkout-step h3 {
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+}
+
+/* Panier */
+#cart-summary {
+    max-width: 800px;
+    margin: 2rem auto;
+    text-align: center;
+}
+
+#cart-summary table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+#cart-summary th,
+#cart-summary td {
+    border: 1px solid var(--border-color);
+    padding: 0.8rem;
+    text-align: left;
+}
+
+#cart-summary th {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    font-weight: 600;
+}
+
+#cart-summary td {
+    background-color: var(--text-light);
+}
+
+#cart-summary tr:nth-child(even) td {
+    background-color: #f9f9f9;
+}
+
+#cart-total-price {
+    font-size: 1.5em;
+    color: var(--accent-color);
+}
+
+#empty-cart-message {
+    font-style: italic;
+    color: #777;
+    margin-bottom: 1.5rem;
+}
+
+/* Formulaire d'infos client et paiement Mobile Money */
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"] {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1.1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="tel"]:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.3);
+    outline: none;
+}
+
+.form-group small {
+    display: block;
+    margin-top: 0.5rem;
+    color: #777;
+    font-size: 0.9em;
+}
+
+#customer-info-form .btn,
+#mobile-money-instructions .btn,
+#payment-error-message .btn,
+#payment-success-message .btn {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+#customer-info-form .btn-secondary,
+#mobile-money-instructions .btn-secondary,
+#payment-error-message .btn-secondary {
+    margin-left: 1rem;
+}
+
+/* Instructions Mobile Money */
+#mobile-money-instructions p {
+    margin-bottom: 1rem;
+    font-size: 1.1em;
+    color: #555;
+}
+
+#mobile-money-instructions .highlight-code {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: var(--accent-color);
+    background-color: #e6ffe6;
+    padding: 0.3rem 0.6rem;
+    border-radius: 5px;
+}
+
+#mobile-money-instructions .instruction-dial,
+#mobile-money-instructions .instruction-pay {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-top: 1.5rem;
+}
+
+.waiting-message {
+    font-style: italic;
+    color: #888;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Messages globaux (succès, erreur, info) */
+.global-message {
+    padding: 1rem;
+    margin: 1.5rem auto;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 600;
+    max-width: 600px;
+    transition: opacity 0.3s ease;
+}
+
+.global-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.global-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* ============================ */
+/* Responsive Design (Media Queries) */
+/* ============================ */
+
+@media (max-width: 992px) {
+    /* ... (règles existantes pour les médias queries) ... */
+    #checkout section { /* Adjusted for general section */
+        padding: 3rem 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* ... (règles existantes pour les médias queries) ... */
+    #checkout section { /* Adjusted for general section */
+        padding: 2.5rem 1rem;
+    }
+    #cart-summary table {
+        font-size: 0.9em;
+    }
+    #cart-summary th, #cart-summary td {
+        padding: 0.6rem;
+    }
+    .btn, .btn-secondary {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9em;
+    }
+    #customer-info-form .btn-secondary,
+    #mobile-money-instructions .btn-secondary,
+    #payment-error-message .btn-secondary {
+        margin-left: 0;
+        margin-top: 0.8rem;
+        display: block; /* Stack buttons */
+        width: 100%;
+    }
+    .checkout-step {
+        margin: 1rem auto;
+        padding: 1.5rem;
+    }
+    .form-group input {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    /* ... (règles existantes pour les médias queries) ... */
+    h2 {
+        font-size: 1.6em;
+    }
+    .instruction-dial, .instruction-pay {
+        font-size: 1.1em;
+    }
+}

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma Bibliothèque Numérique - Livres Digitaux</title>
+    
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js"></script>
+
+</head>
+<body>
+
+    <!-- En-tête de la page : Logo, titre du site, navigation principale -->
+    <header>
+        <h1>Ma Bibliothèque Numérique</h1>
+        <nav>
+            <ul>
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#livres-numeriques">Tous les Livres</a></li>
+                <li><a href="#categories">Catégories</a></li>
+                <!-- <li><a href="#nouveautes">Nouveautés</a></li> -->
+                <li><a href="#mon-compte">Mon Compte</a></li>
+                <li><a href="#checkout" id="panier-link">Panier (<span id="cart-item-count">0</span>)</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Contenu principal de la page -->
+    <main>
+        <!-- Section d'accueil / Bandeau promotionnel -->
+        <section id="accueil">
+            <h2>Découvrez Votre Prochaine Lecture Numérique</h2>
+            <p>Explorez notre vaste collection de livres numériques et plongez dans des histoires captivantes, des connaissances enrichissantes et des aventures inoubliables. Achetez et lisez instantanément sur tous vos appareils.</p>
+            <a href="#livres-numeriques">Parcourir les Livres Maintenant</a>
+        </section>
+
+        <!-- Section de recherche de livres -->
+        <section id="recherche">
+            <h2>Rechercher un Livre</h2>
+            <form action="#" method="get">
+                <label for="search-input">Rechercher par titre, auteur, genre...</label>
+                <input type="search" id="search-input" name="q" placeholder="Ex: Le Seigneur des Anneaux, Tolstoï, Fantaisie">
+                <button type="submit">Rechercher</button>
+            </form>
+        </section>
+
+        <!-- Section présentant les livres numériques (ex: les plus populaires, les nouveautés) -->
+        <section id="livres-numeriques">
+            <h2>Nos Livres Numériques Phares</h2>
+            
+            <!-- Conteneur pour la grille de livres (le JS remplira ceci) -->
+            <div class="book-grid">
+                <!-- Les livres seront injectés ici par JavaScript -->
+            </div>
+            
+            <p style="text-align: center; margin-top: 2rem;"><a href="#tous-les-livres">Voir tous nos livres numériques...</a></p>
+        </section>
+
+        <!-- Section des catégories de livres -->
+        <section id="categories">
+            <h2>Parcourir par Catégorie</h2>
+            <ul>
+                <li><a href="#cat-all" data-category="all">Tous les Livres</a></li>
+                <li><a href="#cat-fiction" data-category="fiction">Fiction</a></li>
+                <li><a href="#cat-fantaisie" data-category="fantaisie">Fantaisie</a></li>
+                <li><a href="#cat-science-fiction" data-category="science-fiction">Science-fiction</a></li>
+                <li><a href="#cat-romance" data-category="romance">Romance</a></li>
+                <li><a href="#cat-thriller" data-category="thriller">Thriller</a></li>
+                <li><a href="#cat-biographie" data-category="biographie">Biographie</a></li>
+                <li><a href="#cat-histoire" data-category="histoire">Histoire</a></li>
+                <li><a href="#cat-sciences" data-category="sciences">Sciences</a></li>
+                <li><a href="#cat-dev-perso" data-category="développement personnel">Développement Personnel</a></li>
+                <li><a href="#cat-cuisine" data-category="cuisine & recettes">Cuisine & Recettes</a></li>
+                <li><a href="#cat-jeunesse" data-category="jeunesse">Jeunesse</a></li>
+                <li><a href="#cat-poesie" data-category="poésie">Poésie</a></li>
+                <!-- Ajoutez plus de catégories si nécessaire -->
+            </ul>
+        </section>
+
+        <!-- Section "Comment ça marche ?" -->
+        <section id="comment-ca-marche">
+            <h2>Comment Acheter un Livre Numérique ?</h2>
+            <ol>
+                <li><strong>Recherchez :</strong> Trouvez le livre que vous souhaitez grâce à notre barre de recherche ou en parcourant nos catégories.</li>
+                <li><strong>Achetez :</strong> Ajoutez le livre à votre panier et suivez les étapes simples de notre processus de paiement sécurisé.</li>
+                <li><strong>Téléchargez & Lisez :</strong> Une fois l'achat confirmé, accédez instantanément à votre livre numérique depuis votre compte et téléchargez-le dans le format de votre choix (EPUB, PDF, etc.).</li>
+                <li><strong>Profitez :</strong> Lisez votre livre sur votre liseuse, tablette, smartphone ou ordinateur !</li>
+            </ol>
+        </section>
+    </main>
+
+    <!-- Nouvelle Section de Panier et Paiement -->
+    <section id="checkout" class="hidden-section">
+        <h2>Votre Panier</h2>
+
+        <div id="cart-summary">
+            <!-- Les articles du panier seront injectés ici par JS -->
+            <p id="empty-cart-message">Votre panier est vide pour le moment.</p>
+            <table id="cart-items-table" class="hidden">
+                <thead>
+                    <tr>
+                        <th>Livre</th>
+                        <th>Prix Unitaire</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Lignes d'articles du panier injectées par JS -->
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="2"><strong>Total :</strong></td>
+                        <td id="cart-total-price"><strong>0.00 €</strong></td>
+                    </tr>
+                </tfoot>
+            </table>
+            <button id="proceed-to-payment-btn" class="btn hidden">Procéder au Paiement</button>
+        </div>
+
+        <div id="customer-info-form" class="checkout-step hidden">
+            <h3>Vos Coordonnées</h3>
+            <form id="payment-info-form">
+                <div class="form-group">
+                    <label for="buyer-name">Nom Complet :</label>
+                    <input type="text" id="buyer-name" name="buyerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone-number">Numéro de Téléphone (Mobile Money) :</label>
+                    <input type="tel" id="phone-number" name="phoneNumber" pattern="[0-9]{8,15}" required>
+                    <small>Format: 8 à 15 chiffres (Ex: 07XXXXXXXX)</small>
+                </div>
+                <button type="submit" class="btn">Continuer vers le paiement</button>
+            </form>
+            <button id="back-to-cart-btn" class="btn-secondary">Retour au panier</button>
+        </div>
+
+        <div id="mobile-money-instructions" class="checkout-step hidden">
+            <h3>Paiement Mobile Money</h3>
+            <p>Veuillez suivre les instructions suivantes sur votre téléphone pour compléter le paiement :</p>
+            <p class="instruction-dial"><strong>1. Composez le <span class="highlight-code">*123*456#</span></strong> (Ceci est un exemple de code USSD. Sur un vrai site, ce serait le code de l'opérateur).</p>
+            <p class="instruction-pay"><strong>2. Validez le paiement de <span id="payment-amount">X.XX €</span> à <span id="payment-recipient">Ma Bibliothèque Numérique</span>.</strong></p>
+            <p><strong>3. Entrez votre code PIN Mobile Money pour confirmer la transaction.</strong></p>
+            <p class="waiting-message">Nous attendons votre confirmation. Une fois le paiement effectué, vous recevrez un code de transaction par SMS.</p>
+            
+            <form id="transaction-code-form">
+                <div class="form-group">
+                    <label for="transaction-code">Entrez le code de transaction :</label>
+                    <input type="text" id="transaction-code" name="transactionCode" required>
+                </div>
+                <button type="submit" class="btn">Confirmer Paiement</button>
+            </form>
+            <button id="cancel-payment-btn" class="btn-secondary">Annuler le paiement</button>
+        </div>
+
+        <div id="payment-success-message" class="checkout-step hidden">
+            <h3>Paiement Réussi !</h3>
+            <p>Félicitations ! Votre paiement a été reçu et votre commande est confirmée.</p>
+            <p>Vous pouvez dès maintenant télécharger vos livres depuis votre compte. Un email de confirmation a également été envoyé.</p>
+            <button id="continue-shopping-btn" class="btn">Continuer mes achats</button>
+        </div>
+
+        <div id="payment-error-message" class="checkout-step hidden">
+            <h3>Erreur de Paiement</h3>
+            <p>Une erreur est survenue lors du traitement de votre paiement. Veuillez vérifier les informations et réessayer.</p>
+            <p id="error-details"></p>
+            <button id="retry-payment-btn" class="btn">Réessayer le paiement</button>
+            <button id="return-to-cart-after-error-btn" class="btn-secondary">Retour au panier</button>
+        </div>
+
+        <div id="global-message" class="global-message"></div>
+
+    </section>
+
+    <!-- Pied de page : Liens secondaires, informations de contact, copyright -->
+    <footer>
+        <nav>
+            <ul>
+                <li><a href="#apropos">À Propos de Nous</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contactez-nous</a></li>
+                <li><a href="#confidentialite">Politique de Confidentialité</a></li>
+                <li><a href="#conditions">Conditions Générales de Vente</a></li>
+            </ul>
+        </nav>
+        <div class="social-media">
+            <p>Suivez-nous :</p>
+            <ul>
+                <li><a href="#" target="_blank">Facebook</a></li>
+                <li><a href="#" target="_blank">Twitter</a></li>
+                <li><a href="#" target="_blank">Instagram</a></li>
+            </ul>
+        </div>
+        <p>© 2023 Ma Bibliothèque Numérique. Tous droits réservés.</p>
+    </footer>
+
+    <!-- La modale de détails du livre reste la même -->
+    <div class="book-modal" aria-hidden="true">
+        <div class="modal-content">
+            <span class="close-button">×</span>
+            <div class="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+/* Base styles */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f2f5;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Calculator container */
+.calculator-container {
+    background-color: #2d2d2d;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 320px;
+}
+
+/* Display section */
+.calculator-display {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: right;
+    min-height: 60px;
+}
+
+.display-content {
+    font-size: 2.2em;
+    color: #333;
+    font-weight: 300;
+}
+
+/* Buttons grid */
+.calculator-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+/* Base button style */
+.btn {
+    border: none;
+    padding: 20px;
+    font-size: 1.2em;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* Number buttons */
+.number-btn {
+    background-color: #e9ecef;
+    color: #333;
+}
+
+.number-btn:hover {
+    background-color: #d3d9df;
+}
+
+/* Operator buttons */
+.operator-btn {
+    background-color: #ff9500;
+    color: white;
+}
+
+.operator-btn:hover {
+    background-color: #db8100;
+}
+
+/* Special buttons */
+.clear-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.clear-btn:hover {
+    background-color: #bb2d3b;
+}
+
+.equals-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.equals-btn:hover {
+    background-color: #218838;
+}
+
+/* Zero button span */
+.zero-btn {
+    grid-column: span 2;
+}
