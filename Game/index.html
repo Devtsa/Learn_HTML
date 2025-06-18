@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bricks</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Screen login -->
+    <div id="login-view" class="view active">
+        <div class="form-container">
+            <h1>Bricks Game</h1>
+             <div id="notification" class="notification hidden"></div>
+            <input type="text" id="username-input" placeholder="Enter your username" required>
+            <button id="login-btn">Play</button>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard-view" class="view">
+        <div class="dashboard-container">
+            <h2 id="welcome-message"></h2>
+            <p>Your Level max: <span id="max-level-display">0</span></p>
+            <button id="start-game-btn">Begin a party</button>
+            <button id="logout-btn">Change User</button>
+        </div>
+    </div>
+    
+    <!-- Écran de Jeu -->
+    <div id="game-view" class="view">
+        <div id="game-ui">
+            <span>Score: <span id="score">0</span></span>
+            <span>Level: <span id="level">0</span></span>
+            <span>Life: <span id="lives">3</span></span>
+        </div>
+        <canvas id="gameCanvas"></canvas>
+        <div id="game-over-screen" class="hidden">
+            <h1>GAME OVER</h1>
+            <button id="restart-btn">Return to Dashboard</button>
+        </div>
+        <div id="level-complete-screen" class="hidden">
+            <h1>NIVEAU TERMINÉ !</h1>
+            <button id="next-level-btn">Niveau Suivant</button>
+        </div>
+    </div>
+
+    <script src="logic/auth.js"></script>
+    <script src="logic/game.js"></script>
+    <script src="logic/main.js"></script>
+</body>
+</html>

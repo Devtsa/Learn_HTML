@@ -1,0 +1,5 @@
+This is first version for this game!
+
+version 0.0.0.1
+Thank you for you attention!
+copyright 2025
